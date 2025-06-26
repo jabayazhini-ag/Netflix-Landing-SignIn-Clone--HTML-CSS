@@ -70,6 +70,12 @@ nav button a {
     margin-right: 5px;
 }
 
+.translate {
+  width: 18px;      /* adjust as needed */
+  height: 18px;     /* adjust as needed */
+  vertical-align: middle;
+}
+
 .header-content{
     position: absolute;
     top: 40%;
@@ -80,23 +86,25 @@ nav button a {
 }
 
 .header-content h1{
-    font-size: 40px;
+    font-size: 45px;
     line-height: 70px;
     font-weight: 800;
     max-width:950px;
     margin-left: 10px;
+    white-space: nowrap;
+    margin-bottom: 20px;
 }
 
 .header-content h3{
     font-weight: 400;
-    margin-bottom: 20px;
-    font-size: 21px;
+    margin-bottom: 30px;
+    font-size: 25px;
     left: 50%;
 }
 
 .header-content p{
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 20px;
     left: 50%;
 }
 
@@ -146,20 +154,27 @@ nav button a {
 
 .row{
     display: flex;
-    width:100%;
+    width: 100%;
     align-items: center;
     flex-wrap: wrap;
-    padding: 50px 0;        
+    padding: 50px 0;
+    border-bottom: 8px solid #333;
+}
+
+.row:last-child {
+    border-bottom: none;
 }
 
 .text-column{
     flex-basis: 50%;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;
+    padding: 0 20px;
 }
 
 .image-column{
     flex-basis: 50%;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;
+    padding: 0 20px;
 }
 
 .image-column img{
@@ -174,39 +189,16 @@ nav button a {
     margin-bottom: 20px;
 }
 
-/* 
-.row:not(:last-child) {
-    border-bottom: 8px solid #333;
-    padding-bottom: 20px; 
-} */
-
+/* Remove the problematic pseudo-elements */
+/* These were causing the alignment issues */
 .features .row:not(:last-child) {
     position: relative;
-    margin: 0 -12%; /* Adjust to match your .features padding */
+    margin: 0; /* Reset margin */
 }
 
-.features .row:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 8px;
-    background-color: #333; /* Match the top border color */
-    transform: translateX(-50%);
-    left: 50%; /* Center the border */
-}
-
+.features .row:not(:last-child)::after,
 .features .row:not(:last-child)::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 8px;
-    background-color: #333; /* Match the top border color */
-    transform: translateX(50%);
-    right: 50%; /* Center the border */
+    display: none; /* Remove the problematic pseudo-elements */
 }
 
 /* -------------FAQ-------------------- */
@@ -216,6 +208,15 @@ nav button a {
     text-align: center;
     font-size: 28px;
     border-top: 8px solid #333;
+}
+
+.faq h2 {
+    margin: 2rem;
+    font-weight: 900;
+}
+
+.faq li p {
+    font-size:23px;
 }
 
 .accordion{
@@ -230,15 +231,11 @@ nav button a {
     padding: 5px;
 }
 
-.accordion li:hover{
-    opacity: 0.7;
-}
-
 .accordion li label{
     display:flex;
     align-items:center;
     padding:25px;
-    font-size:18px;
+    font-size:23px;
     font-weight: 500;
     background: #303030;
     margin-bottom: 2px;
@@ -246,10 +243,14 @@ nav button a {
     position: relative;
 }
 
+.accordion li label:hover {
+    background: #4a4a4a;
+}
+
 label::after{
     content: '+';
     font-size: 44px;
-    font-weight:lighter;
+    font-weight: normal;
     position: absolute;
     right: 20px;
     transition: transform 0.5s;
@@ -282,8 +283,9 @@ input[type="checkbox"]{
     margin: 20px auto 60px;
 }
 
-.faq p{
-    font-size: 18px;
+.email-above {
+    font-size: 20px;
+    margin-top: 3rem;
 }
 
 /* ----------Footer----------- */
@@ -291,13 +293,20 @@ input[type="checkbox"]{
 .footer{
     padding: 50px 15% 10px;
     border-top: 8px solid #333;
-    color: #777;
+    color: #b3b3b3;
+    background-color: #000000;
 }
 
 .footer p{
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 30px;
+}
+
+.footer p a {
+  color: #b3b3b3; 
+  text-decoration: underline;
+  font-weight: normal;
 }
 
 .footer .column{
@@ -308,7 +317,7 @@ input[type="checkbox"]{
 
 .footer .column a{
     display: block;
-    color: #777;
+    color: #b3b3b3;
     font-size: 14px;
     margin-bottom: 10px;
 }
@@ -318,10 +327,11 @@ input[type="checkbox"]{
     padding: 10px 0;
 }
 
-.footer .languages-button{
+.footer .languages-button {
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 4px;  
+    cursor: pointer;
+    border: 1px solid #6b6b6b;
 }
 
 .copyright-text{
@@ -329,4 +339,21 @@ input[type="checkbox"]{
     margin-top: 25px;
     margin-bottom: 20px;
 }
+
+.recaptcha-note {
+  font-size: 13px !important;;
+  color: #757575 !important;;
+  margin-top: 20px;
+  max-width: 700px;
+  line-height: 1.6;
+  white-space: nowrap !important;; 
+}
+
+.recaptcha-note a {
+  color: #3498db !important;;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px !important;;  
+}
+
 
