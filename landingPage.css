@@ -147,7 +147,6 @@ nav button a {
 /* ------------Features------------- */
 
 .features{
-    padding: 15px 12%;
     font-size: 22px;
     border-top: 8px solid #333;
 }
@@ -157,12 +156,18 @@ nav button a {
     width: 100%;
     align-items: center;
     flex-wrap: wrap;
-    padding: 50px 0;
-    border-bottom: 8px solid #333;
+    padding: 50px 12%;
+    position: relative;
 }
 
-.row:last-child {
-    border-bottom: none;
+.features > .row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 8px;
+    background-color: #333;
 }
 
 .text-column{
@@ -184,21 +189,9 @@ nav button a {
 }
 
 .features h2{
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 600;
     margin-bottom: 20px;
-}
-
-/* Remove the problematic pseudo-elements */
-/* These were causing the alignment issues */
-.features .row:not(:last-child) {
-    position: relative;
-    margin: 0; /* Reset margin */
-}
-
-.features .row:not(:last-child)::after,
-.features .row:not(:last-child)::before {
-    display: none; /* Remove the problematic pseudo-elements */
 }
 
 /* -------------FAQ-------------------- */
@@ -331,7 +324,7 @@ input[type="checkbox"]{
     color: #fff;
     border-radius: 4px;  
     cursor: pointer;
-    border: 1px solid #6b6b6b;
+    border: 1px solid #6b6b6b !important;
 }
 
 .copyright-text{
@@ -355,5 +348,3 @@ input[type="checkbox"]{
   cursor: pointer;
   font-size: 13px !important;;  
 }
-
-
