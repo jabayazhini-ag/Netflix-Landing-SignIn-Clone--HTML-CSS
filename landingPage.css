@@ -302,7 +302,7 @@ nav button a {
 
 label::after {
     content: '+';
-    font-size: 64px;
+    font-size: 54px;
    font-weight: 300 !important;
     position: absolute;
     right: 20px;
@@ -414,4 +414,27 @@ label::after {
   text-decoration: underline;
   cursor: pointer;
   font-size: 13px !important;;  
+}
+
+/* ---------------- Custom Scrollbar Styling ------------ */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #2a2a2a; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    border: 2px solid #2a2a2a; 
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #2a2a2a; /* thumb color, track color */
 }
