@@ -55,6 +55,7 @@ nav button {
     color: #fff;
     padding: 7px 20px;
     font-size: 14px;
+    font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
     height: 40px; /* Set consistent height for all buttons */   
@@ -67,6 +68,11 @@ nav button a {
     color: #fff;
 }
 
+.sign-in:hover {
+    background: #b4060c; 
+    transition: background 0.3s ease;
+}
+
 .languages-button{
     display: inline-flex;
     align-items: center;
@@ -75,6 +81,12 @@ nav button a {
     padding: 7px 10px;
     height: 40px; /* Same height as other buttons */
     box-sizing: border-box; /* Include border in height calculation */
+}
+
+.languages-button:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 1px;
+    border-color: #ffffff;
 }
 
 .languages-button img{
@@ -278,7 +290,6 @@ nav button a {
     align-items:center;
     padding:25px;
     font-size:23px;
-    font-weight: 500;
     background: #303030;
     margin-bottom: 2px;
     cursor: pointer;
@@ -289,16 +300,19 @@ nav button a {
     background: #4a4a4a;
 }
 
-label::after{
+label::after {
     content: '+';
-    font-size: 44px;
-    font-weight: normal;
+    font-size: 64px;
+   font-weight: 300 !important;
     position: absolute;
     right: 20px;
-    transition: transform 0.5s;
+    bottom: 5px;
+    font-family: system-ui, -apple-system, sans-serif !important;
+    transform-origin: center center;
+    /* transition: transform 0.5s; */
 }
 
-input[type="checkbox"]{
+.accordion input[type="checkbox"]{
     display: none;
 }
 
@@ -317,7 +331,9 @@ input[type="checkbox"]{
 }
 
 .accordion input[type="checkbox"]:checked + label::after{
-    transform: rotate(135deg);
+    transform: rotate(45deg);
+    /* transform: rotate(135deg);  */
+    transform-origin: center center;
 }
 
 .faq .email-signup{
@@ -374,9 +390,8 @@ input[type="checkbox"]{
     border-radius: 4px;  
     cursor: pointer;
     border: 1px solid #6b6b6b !important;
-    
-    display: flex;
-    align-items: center; /* Center content vertically within button */
+    font-size: 14px;
+    font-weight: 600; 
 }
 
 .copyright-text{
