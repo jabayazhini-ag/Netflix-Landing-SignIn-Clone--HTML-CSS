@@ -29,17 +29,26 @@ body {
 
 nav{
     display: flex;
-    align-items: center;
+    align-items: center;  /* vertical alignment */
     justify-content: space-between;
     padding: 10px 0;
+    height: 60px; /* fixed height for consistency */
 }
 
 .logo{
     width: 150px;
     cursor: pointer;
+    height: auto; /* Maintain aspect ratio */
 }
 
-nav button{
+/* Container for buttons to keep them aligned */
+nav div {
+    display: flex;
+    align-items: center; /* Align buttons vertically */
+    gap: 15px; /* Space between language button and sign in button */
+}
+
+nav button {
     border:0;
     outline:0;
     background: #db0001;
@@ -47,8 +56,10 @@ nav button{
     padding: 7px 20px;
     font-size: 14px;
     border-radius: 4px;
-    margin-left: 10px;
     cursor: pointer;
+    height: 40px; /* Set consistent height for all buttons */   
+    display: flex;
+    align-items: center; /* Center content vertically within button */
 }
 
 nav button a {
@@ -62,6 +73,8 @@ nav button a {
     background: transparent;
     border: 1px solid #fff;
     padding: 7px 10px;
+    height: 40px; /* Same height as other buttons */
+    box-sizing: border-box; /* Include border in height calculation */
 }
 
 .languages-button img{
@@ -71,8 +84,8 @@ nav button a {
 }
 
 .translate {
-  width: 18px;      /* adjust as needed */
-  height: 18px;     /* adjust as needed */
+  width: 18px;      
+  height: 18px;     
   vertical-align: middle;
 }
 
@@ -103,7 +116,7 @@ nav button a {
 }
 
 .header-content p{
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 20px;
     left: 50%;
 }
@@ -118,7 +131,7 @@ nav button a {
 
 .email-signup input{
     width: 370px;
-    padding: 16px;
+    padding: 15px 16px;
     border: 1px solid #fff;
     border-radius: 5px;
     filter: opacity(70%);
@@ -130,6 +143,22 @@ nav button a {
 .email-signup input::placeholder{
     font-size: 1rem;
     color: #fff;
+    transition: all 0.3s ease;
+    transform-origin: left top;
+}
+
+/* When focused or has content, move placeholder up */
+.email-signup input:focus::placeholder,
+.email-signup input:not(:placeholder-shown)::placeholder {
+    transform: translateY(-16px) scale(0.75);
+    color: white;
+}
+
+.email-signup input:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    border-color: #ffffff;
+    padding: 24px 16px 8px 16px; /* extra top padding when focused to make room for floating label */
 }
 
 .email-signup button{
@@ -142,6 +171,26 @@ nav button a {
     cursor: pointer;
     padding: 15px 30px;
     border-radius: 5px;
+
+    /* Alignment and spacing */
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.arrow {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 2px; /* Small adjustment to align with text */
+}
+
+.email-signup button:hover {
+    background: #b4060c; 
+    transition: background 0.3s ease;
 }
 
 /* ------------Features------------- */
@@ -325,6 +374,9 @@ input[type="checkbox"]{
     border-radius: 4px;  
     cursor: pointer;
     border: 1px solid #6b6b6b !important;
+    
+    display: flex;
+    align-items: center; /* Center content vertically within button */
 }
 
 .copyright-text{
