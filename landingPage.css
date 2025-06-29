@@ -27,7 +27,7 @@ body {
     position: relative;
 }
 
-nav{
+nav {
     display: flex;
     align-items: center;  /* vertical alignment */
     justify-content: space-between;
@@ -35,7 +35,7 @@ nav{
     height: 60px; /* fixed height for consistency */
 }
 
-.logo{
+.logo {
     width: 150px;
     cursor: pointer;
     height: auto; /* Maintain aspect ratio */
@@ -46,6 +46,7 @@ nav div {
     display: flex;
     align-items: center; /* Align buttons vertically */
     gap: 15px; /* Space between language button and sign in button */
+    position: relative; /* Added for dropdown positioning */
 }
 
 nav button {
@@ -58,14 +59,14 @@ nav button {
     font-weight: 600;
     border-radius: 4px;
     cursor: pointer;
-    height: 40px; /* Set consistent height for all buttons */   
+    height: 40px; /* consistent height for all buttons */   
     display: flex;
     align-items: center; /* Center content vertically within button */
 }
 
 nav button a {
     text-decoration: none;
-    color: #fff;
+    color: white;
 }
 
 .sign-in:hover {
@@ -76,13 +77,23 @@ nav button a {
 .languages-button{
     display: inline-flex;
     align-items: center;
-    background: transparent;
+    /* background: transparent; */
     border: 1px solid #fff;
     padding: 7px 10px;
     height: 40px; /* Same height as other buttons */
-    box-sizing: border-box; /* Include border in height calculation */
+    box-sizing: border-box; /* Include border in height calculation */   
+    background: #111111b1;
+    position: relative;
+    outline: none;   /* Remove default focus behavior */
 }
 
+.languages-button:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 1.5px;
+    border-color: #ffffff;
+}
+
+/* Add tabindex functionality for better interaction */
 .languages-button:focus {
     outline: 2px solid #ffffff;
     outline-offset: 1px;
@@ -100,6 +111,123 @@ nav button a {
   height: 18px;     
   vertical-align: middle;
 }
+
+/* Hide dropdown by default */
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #000;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;
+    text-align: center;
+}
+
+/* Show dropdown on focus */
+/* .languages-button:focus + .language-dropdown,
+.language-dropdown:focus {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+} */
+
+/* Show dropdown on button focus and allow interaction */
+.languages-button:focus + .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Keep dropdown visible when hovering over it */
+.language-dropdown:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Show dropdown when button is focused OR when dropdown itself is being interacted with */
+.languages-button:focus + .language-dropdown,
+.language-dropdown:focus-within,
+nav div:focus-within .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Style dropdown items */
+.language-dropdown li {
+    padding: 6px 16px;
+    cursor: pointer;
+    /* border-bottom: 1px solid #333; */
+    /* color: #fff; */
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+/* Default state - English selected (blue), Hindi unselected (white) */
+.language-dropdown li:first-child {
+    background-color: #448ef4;
+    color: #fff;
+}
+
+.language-dropdown li:last-child {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* When hovering on English - keep English blue, Hindi white */
+.language-dropdown li:first-child:hover {
+    background-color: #448ef4;
+    color: #fff;
+}
+
+.language-dropdown li:first-child:hover ~ li:last-child {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* When hovering on Hindi - Hindi becomes blue, English becomes white */
+.language-dropdown li:last-child:hover {
+    background-color: #448ef4;
+    color: #fff;
+}
+
+.language-dropdown:hover li:first-child:not(:hover) {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* When Hindi is hovered, ensure English is white */
+.language-dropdown li:last-child:hover ~ li:first-child,
+.language-dropdown:has(li:last-child:hover) li:first-child {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* .language-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.language-dropdown li:hover {
+    background: #333;
+} */
+
+/* ----------- Hero Section ----------- */
 
 .header-content{
     position: absolute;
@@ -394,9 +522,27 @@ label::after {
     font-weight: 600; 
 }
 
+/* Footer language button dropdown */
+.footer div {
+    position: relative;
+}
+
+/* Footer dropdown styling */
+.footer .language-dropdown {
+    /* bottom: 100%; */
+    top: auto;
+}
+
+.footer .languages-button:focus + .language-dropdown,
+.footer .language-dropdown:focus {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 .copyright-text{
     font-size: 10px;
-    margin-top: 25px;
+    margin-top: 35px;
     margin-bottom: 20px;
 }
 
