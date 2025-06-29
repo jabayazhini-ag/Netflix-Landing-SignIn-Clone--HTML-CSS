@@ -77,7 +77,6 @@ nav button a {
 .languages-button{
     display: inline-flex;
     align-items: center;
-    /* background: transparent; */
     border: 1px solid #fff;
     padding: 7px 10px;
     height: 40px; /* Same height as other buttons */
@@ -87,16 +86,10 @@ nav button a {
     outline: none;   /* Remove default focus behavior */
 }
 
+/* focus state for better accessibility and visual feedback  */
 .languages-button:focus {
     outline: 2px solid #ffffff;
     outline-offset: 1.5px;
-    border-color: #ffffff;
-}
-
-/* Add tabindex functionality for better interaction */
-.languages-button:focus {
-    outline: 2px solid #ffffff;
-    outline-offset: 1px;
     border-color: #ffffff;
 }
 
@@ -134,34 +127,9 @@ nav button a {
     text-align: center;
 }
 
-/* Show dropdown on focus */
-/* .languages-button:focus + .language-dropdown,
-.language-dropdown:focus {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-} */
-
-/* Show dropdown on button focus and allow interaction */
-.languages-button:focus + .language-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-/* Keep dropdown visible when hovering over it */
-.language-dropdown:hover {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
 /* Show dropdown when button is focused OR when dropdown itself is being interacted with */
-.languages-button:focus + .language-dropdown,
-.language-dropdown:focus-within,
-nav div:focus-within .language-dropdown {
+.languages-button:focus + .language-dropdown, .language-dropdown:focus,
+.language-dropdown:focus-within {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -172,8 +140,6 @@ nav div:focus-within .language-dropdown {
 .language-dropdown li {
     padding: 6px 16px;
     cursor: pointer;
-    /* border-bottom: 1px solid #333; */
-    /* color: #fff; */
     font-size: 14px;
     font-weight: 600;
     transition: background-color 0.2s ease;
@@ -218,14 +184,6 @@ nav div:focus-within .language-dropdown {
     background-color: #ffffff;
     color: #000;
 }
-
-/* .language-dropdown li:last-child {
-    border-bottom: none;
-}
-
-.language-dropdown li:hover {
-    background: #333;
-} */
 
 /* ----------- Hero Section ----------- */
 
@@ -529,8 +487,8 @@ label::after {
 
 /* Footer dropdown styling */
 .footer .language-dropdown {
-    /* bottom: 100%; */
     top: auto;
+    pointer-events: none;
 }
 
 .footer .languages-button:focus + .language-dropdown,
