@@ -45,11 +45,11 @@ nav {
 nav div {
     display: flex;
     align-items: center; /* Align buttons vertically */
-    gap: 15px; /* Space between language button and sign in button */
+    gap: 16px; /* Space between language button and sign in button */
     position: relative; /* Added for dropdown positioning */
 }
 
-nav button {
+nav button, .languages-button {
     border:0;
     outline:0;
     background: #db0001;
@@ -86,23 +86,21 @@ nav button a {
     outline: none;   /* Remove default focus behavior */
 }
 
-/* focus state for better accessibility and visual feedback  */
-.languages-button:focus {
-    outline: 2px solid #ffffff;
-    outline-offset: 1.5px;
-    border-color: #ffffff;
-}
-
-.languages-button img{
+.languages-button img {
     width: 10px;
     margin-left: 10px;
     margin-right: 5px;
 }
 
 .translate {
-  width: 18px;      
-  height: 18px;     
-  vertical-align: middle;
+    width: 16px !important;     
+    height: 16px !important;    
+    vertical-align: middle;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.dropdown-toggle {
+    display: none;
 }
 
 /* Hide dropdown by default */
@@ -116,7 +114,7 @@ nav button a {
     list-style: none;
     padding: 0;
     margin: 0;
-    min-width: 120px;
+    min-width: 128px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -127,15 +125,6 @@ nav button a {
     text-align: center;
 }
 
-/* Show dropdown when button is focused OR when dropdown itself is being interacted with */
-.languages-button:focus + .language-dropdown, .language-dropdown:focus,
-.language-dropdown:focus-within {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
 /* Style dropdown items */
 .language-dropdown li {
     padding: 6px 16px;
@@ -143,6 +132,22 @@ nav button a {
     font-size: 14px;
     font-weight: 600;
     transition: background-color 0.2s ease;
+}
+
+/* focus state for better accessibility and visual feedback when clicked or focused */  
+.languages-button:focus, .languages-button:active,
+.dropdown-toggle:checked + .languages-button {
+    outline: 2px solid #ffffff !important;
+    outline-offset: 1.5px;
+    border-color: #ffffff;
+}
+
+/* Show dropdown when checkbox is checked */
+.dropdown-toggle:checked + .languages-button + .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* Default state - English selected (blue), Hindi unselected (white) */
@@ -386,7 +391,7 @@ nav button a {
     background: #4a4a4a;
 }
 
-label::after {
+.accordion label::after {
     content: '+';
     font-size: 54px;
    font-weight: 300 !important;
@@ -491,11 +496,11 @@ label::after {
     pointer-events: none;
 }
 
-.footer .languages-button:focus + .language-dropdown,
-.footer .language-dropdown:focus {
+.footer .dropdown-toggle:checked + .languages-button + .language-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 .copyright-text{
