@@ -183,13 +183,6 @@ nav button a {
     color: #000;
 }
 
-/* When Hindi is hovered, ensure English is white */
-.language-dropdown li:last-child:hover ~ li:first-child,
-.language-dropdown:has(li:last-child:hover) li:first-child {
-    background-color: #ffffff;
-    color: #000;
-}
-
 /* ----------- Hero Section ----------- */
 
 .header-content{
@@ -510,12 +503,12 @@ nav button a {
 }
 
 .recaptcha-note {
-  font-size: 13px !important;;
-  color: #757575 !important;;
+  font-size: 13px !important;
+  color: #757575 !important;
   margin-top: 20px;
   max-width: 700px;
   line-height: 1.6;
-  white-space: nowrap !important;; 
+  white-space: nowrap !important;
 }
 
 .recaptcha-note a {
