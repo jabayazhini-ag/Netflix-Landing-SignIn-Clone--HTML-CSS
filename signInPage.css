@@ -142,22 +142,16 @@ button{
     margin-bottom: 30px;
 }
 
-.footer .column{
-    flex-basis: 25%;
-    flex-grow: 1;
-    margin-bottom: 20px;
-}
-
-.footer .column a{
-    display: block;
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
 .footer .row{
     align-items: flex-start;
     padding: 10px 0;
+    gap: 20px;
+}
+
+.footer .row a{
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .footer .languages-button{
@@ -172,3 +166,115 @@ button{
     margin-bottom: 20px;
 }
 
+.languages-button{
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #fff;
+    padding: 7px 10px;
+    height: 40px; /* Same height as other buttons */
+    box-sizing: border-box; /* Include border in height calculation */   
+    background: #111111b1;
+    position: relative;
+    outline: none;   /* Remove default focus behavior */
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    align-items: center; /* Center content vertically within button */
+}
+
+.languages-button img {
+    width: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.translate {
+    width: 16px !important;     
+    height: 16px !important;    
+    vertical-align: middle;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.dropdown-toggle {
+    display: none;
+}
+
+/* Hide dropdown by default */
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #000;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 128px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;
+    text-align: center;
+}
+
+/* Style dropdown items */
+.language-dropdown li {
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+/* focus state for better accessibility and visual feedback when clicked or focused */  
+.languages-button:focus, .languages-button:active,
+.dropdown-toggle:checked + .languages-button {
+    outline: 2px solid #ffffff !important;
+    outline-offset: 1.5px;
+    border-color: #ffffff;
+}
+
+/* Show dropdown when checkbox is checked */
+.dropdown-toggle:checked + .languages-button + .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Default state - English selected (blue), Hindi unselected (white) */
+.language-dropdown li:first-child {
+    background-color: #448ef4;
+    color: #fff;
+}
+
+.language-dropdown li:last-child {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* When hovering on English - keep English blue, Hindi white */
+.language-dropdown li:first-child:hover {
+    background-color: #448ef4;
+    color: #fff;
+}
+
+.language-dropdown li:first-child:hover ~ li:last-child {
+    background-color: #ffffff;
+    color: #000;
+}
+
+/* When hovering on Hindi - Hindi becomes blue, English becomes white */
+.language-dropdown li:last-child:hover {
+    background-color: #448ef4;
+    color: #fff;
+}
+
+.language-dropdown:hover li:first-child:not(:hover) {
+    background-color: #ffffff;
+    color: #000;
+}
