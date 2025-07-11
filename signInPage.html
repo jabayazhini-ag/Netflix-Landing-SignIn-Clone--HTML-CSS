@@ -10,48 +10,43 @@
 </head>
 
 <body>
-    <a href="index.html" target="_self">
-        <img src="./Assets/2logo.png" alt="Netflix logo" class="logo">
-    </a>
-    <div class="container">
-        <h1 class="title">Sign In</h1>
-        <span class="msg">
-            <b>
-                <p id="msg-title">Incorrect Password for email@gmail.com</p>
-            </b>
-            <p>You can use a sign-in code, reset your password</p>
-        </span>
+    <main>
+        <a href="index.html" target="_self">
+            <img src="./Assets/2logo.png" alt="Netflix logo" class="logo">
+        </a>
+        <div class="container">
+            <h1 class="title">Sign In</h1>
+            <span class="msg">
+                <b>
+                    <p id="msg-title">Incorrect Password for email@gmail.com</p>
+                </b>
+                <p>You can use a sign-in code, reset your password</p>
+            </span>
 
-        <form action="">
-            <div class="label">
-                <label for="email">Email or Phone number</label>
-                <input type="text" name="email" id="email" placeholder="Email or Phone number">
+            <form action="">
+                <input type="text" name="email" id="email" placeholder="Email or mobile number">
+
+                <input type="password" name="password" id="password" placeholder="Password">
+
+                <button id="submit">Sign In</button>
+            </form>
+
+            <p id="or">OR</p>
+
+            <button id="code">Use a sign-in code</button>
+            <h3 id="forgot-password"><a href="#">Forgot Password?</a></h3>
+            <div class="remember">
+                <input type="checkbox" name="remember" id="remember-checkbox" checked>
+                <h3>Remember me</h3>
             </div>
-            <div class="label">
-                <label for="password">Password</label>
-                <input type="text" name="email" id="email" placeholder="Password">
+            <div class="sign-up">
+                <p>New to Netflix? <a href="#">Sign up now.</a></p>
             </div>
-            <button id="submit">Sign In</button>
-        </form>  
-
-        <p id="or">OR</p>
-
-        <button id="code">Use a sign-in code</button>
-        <h3 id="forgot-password"><a href="#">Forgot Password?</a></h3>
-        <div class="remember">
-            <input type="checkbox" name="remember" id="remember-checkbox" checked>
-            <h3>Remember me</h3>
+            <p id="bottom-msg">This page is protected by Google reCAPTCHA to ensure<span> you're not a bot.</span></p>
+            <p><a href="#">Learn more.</a></p>
         </div>
-        <div class="sign-up">
-            <p>New to Netflix? <a href="#">Sign up now.</a></p>
-        </div>
-        <p id="bottom-msg">This page is protected by Google reCAPTCHA to ensure<span> you're not a bot.</span> </p>
-        <p><a href="#">Learn more.</a></p>
-    </div>
-
-     <!---------------Footer---------------->
-
-     <div class="footer">
+    </main>
+    <div class="footer">
         <p>Questions? Call 000-800-919-1743 (Toll-Free)</p>
         <div class="row">            
                 <a href="#">FAQ</a>
@@ -61,7 +56,7 @@
                 <a href="#">Cookie Preferences</a>
                 <a href="#">Corporate Information</a> 
         </div>
-        <div>
+        <div class="language">
             <input type="checkbox" id="footerDropdownToggle" class="dropdown-toggle">
             <label for="footerDropdownToggle" class="languages-button">
                 <img src="Assets/5TranslateIcon.png" alt="Translate Icon" class="translate"> English<img
@@ -73,7 +68,7 @@
             </ul>
         </div>
     </div>
-    
+
 </body>
 
 </html>

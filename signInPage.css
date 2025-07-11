@@ -1,185 +1,311 @@
-*{
-    /* margin: 0;
-    padding: 0; */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+/* Apply the background to the html element to ensure it covers the entire page */
 html {
-    overflow-x: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(./Assets/3Netflix-Hintergrund.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps background fixed when scrolling */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh; /* Ensure html covers at least viewport height */
 }
 
-body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./Assets/3Netflix-Hintergrund.webp);
+body {
+    background: transparent; /* Make body transparent so html background is visible */
+    color: #fff;
+    width: 100%;
+    /* Netflix typically uses a clean sans-serif font */
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh; /* Ensure body also covers at least viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer to bottom, content to top-middle */
+    align-items: center; /* Center content horizontally */
+}
+
+main {
+    /* No background-image here anymore as it's on html */
     color: white;
-    overflow-x: hidden;     
+    width: 100%; /* Take full width */
+    display: flex; /* Use flexbox for inner alignment */
+    flex-direction: column;
+    align-items: center; /* Center form horizontally */
+    flex-grow: 1; /* Allow main to grow and push footer down */
+    padding-top: 20px; /* Space for the logo at the top */
+    padding-bottom: 50px; /* Space below form before footer */
 }
 
-.logo{
-    width: 200px;
+.logo {
+    width: 9vw; /* Adjusted width for smaller logo */
     cursor: pointer;
-    padding: 10px 20px;
-    margin-left: 10%;
+    position: absolute; /* Position absolutely relative to the viewport/body */
+    top: 25px;
+    left: 10%; /* Keep the left margin for the logo */
+    z-index: 20; /* Ensure logo is on top */
 }
 
-a{
+a {
     color: white;
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
-.container{
-    background-color: rgb(0, 0, 0);
+.container {
+    background-color: rgba(0, 0, 0, 0.75); /* Use rgba for transparency */
     width: 450px;
-    margin: auto;
-    padding: 30px 50px;
+    max-width: 90%; /* Ensure it's responsive for smaller screens */
+    padding: 48px 68px; /* Adjusted padding to make it less "big" and match Netflix more closely */
     display: flex;
     flex-direction: column;
-    opacity: 75%;
+    border-radius: 4px;
+    margin-top: 60px; /* Adjust margin from top to bring it slightly lower than default */
+    position: relative;
+    z-index: 10;
 }
 
-.title{
-    font-size: 40px;
+.title {
+    font-size: 32px;
+    margin-bottom: 28px;
+    font-weight: 700;
 }
 
-.msg{
+.msg {
     display: none;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
 }
 
-.label{
-    border: 2px solid rgb(254, 251, 251);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    margin: 10px 0px;
-    min-height: 60px;
-}
-
-.label label{
-    font-size: 20px;
-}
-
-.label input{
-    display: none;
-    /* font-size: 20px;
-    font-weight: bold; */
-}
-
-button{
-    background-color: red;
-    font-size: 20px;
-    border-radius: 5px;
-    border: none;
-    padding: 10px;
-    color: white;
-}
-
-#code{
-    width: 370px;
-    padding: 16px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    filter: opacity(70%);
-    background: #111;
+/* Styling for the input fields themselves */
+form input {
+    background: #333; /* Darker background for inputs */
+    border: 0;
+    border-radius: 4px;
     color: #fff;
-    font-size: 1rem;
-    opacity: 50%;
+    height: 50px;
+    line-height: 50px;
+    padding: 16px 20px 0; /* Adjust padding to make placeholder appear centered vertically */
+    margin-bottom: 16px; /* Space between inputs */
+    outline: none; /* Remove outline on focus */
+    font-size: 16px;
 }
 
-#code input::placeholder{
-    font-size: 1rem;
-    color: white;
+form input::placeholder {
+    color: #8c8c8c; /* Lighter color for placeholder */
+    font-size: 16px;
 }
 
-#or{
-    text-align: center;
-    font-size: 20px;
-}
-
-#forgot-password{
-    text-align: center;
-}
-
-.remember{
-    display: flex;
-}
-
-.remember input{
-    width: 20px;
-    margin-right: 5px;
-}
-
-.sign-up a{
+/* Styling for the Sign In button */
+button#submit {
+    background-color: #e50914; /* Netflix red */
+    font-size: 16px;
     font-weight: bold;
-    font-size: 20px;
-    /* color: white; */
+    border-radius: 4px;
+    border: none;
+    padding: 16px; /* Adjusted padding */
+    color: white;
+    margin-top: 24px; /* Space above button */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-#bottom-msg a{
-    color: blue;
+button#submit:hover {
+    background-color: #f40612; /* Slightly brighter red on hover */
 }
+
+#or {
+    text-align: center;
+    font-size: 16px;
+    color: #8c8c8c; /* Grayish color */
+    margin: 16px 0; /* Space around OR */
+}
+
+#code {
+    width: 100%; /* Make it full width of container */
+    padding: 16px;
+    border: 1px solid #8c8c8c; /* Gray border */
+    border-radius: 4px;
+    background: #333333; /* Dark background */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 1; /* Remove opacity to make it fully visible */
+    font-weight: bold;
+    margin-bottom: 12px; /* Space below button */
+    transition: background-color 0.2s ease;
+}
+
+#code:hover {
+    background-color: #444; /* Slightly lighter on hover */
+}
+
+#forgot-password {
+    text-align: center;
+    margin-bottom: 20px; /* Space below link */
+}
+
+#forgot-password a {
+    color: #0071eb; /* Blue color as seen in Netflix image */
+    font-size: 16px;
+}
+
+#forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.remember {
+    display: flex;
+    align-items: center; /* Vertically align checkbox and text */
+    margin-bottom: 60px; /* Increased space below remember me */
+    font-size: 13px; /* Smaller font size */
+    color: #8c8c8c; /* Grayish color */
+}
+
+.remember input[type="checkbox"] {
+    width: 16px; /* Adjust checkbox size */
+    height: 16px;
+    margin-right: 5px;
+    background-color: #737373; /* Darker checkbox background */
+    border: 0;
+    vertical-align: middle;
+    -webkit-appearance: none; /* Remove default checkbox style */
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.remember input[type="checkbox"]:checked {
+    background-color: #0071eb; /* Blue when checked */
+}
+
+.remember input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: white; /* White checkmark */
+    display: none; /* Hidden by default */
+}
+
+.remember input[type="checkbox"]:checked::before {
+    display: block; /* Show checkmark when checked */
+}
+
+.remember h3 {
+    font-size: 13px; /* Match text size */
+    font-weight: normal; /* Normal weight */
+}
+
+.sign-up {
+    margin-bottom: 10px;
+}
+
+.sign-up p {
+    color: #8c8c8c; /* Grayish color */
+    font-size: 16px;
+}
+
+.sign-up a {
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff; /* White color as seen in Netflix image */
+}
+
+#bottom-msg {
+    color: #8c8c8c;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+#bottom-msg span {
+    color: #0071eb;
+}
+
+#bottom-msg + p { /* Selector for the Learn more link */
+    margin-top: 5px;
+    font-size: 13px;
+    color: #0071eb;
+}
+
+#bottom-msg + p a {
+    color: #0071eb;
+}
+
 
 /* ----------Footer----------- */
 
-.footer{
+.footer {
     padding: 50px 15% 10px;
-    color: #777;
-    background: #111;
+    color: #b3b3b3;
+    background: #000;
+    border-top: 1px solid #333;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    flex-shrink: 0;
+    padding-bottom: 5%;
 }
 
-.footer p{
+.footer p {
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 30px;
 }
 
-.footer .row{
-    align-items: flex-start;
+.footer .row {
+    display: flex; /* Use flexbox for link layout */
+    flex-wrap: wrap; /* Allow links to wrap to next line */
     padding: 10px 0;
-    gap: 20px;
+    gap: 15px 50px; /* Reduced vertical gap, increased horizontal gap */
+    /* You might need to adjust gap or flex-basis for exact 4-column layout based on screen width */
 }
 
-.footer .row a{
-    color: #777;
+.footer .row a {
+    color: #b3b3b3;
     font-size: 14px;
     margin-bottom: 10px;
-}
-
-.footer .languages-button{
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 3px;
-}
-
-.copyright-text{
-    font-size: 10px;
-    margin-top: 25px;
-    margin-bottom: 20px;
+    flex-basis: calc(25% - 50px); /* Approx 4 columns with gap, adjust as needed */
+    min-width: 100px; /* Ensure links don't get too narrow */
+    text-decoration: underline;
 }
 
 .languages-button{
     display: inline-flex;
     align-items: center;
-    border: 1px solid #fff;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;  
+    border: 1px solid #6b6b6b !important;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: 600; 
     padding: 7px 10px;
     height: 40px; /* Same height as other buttons */
     box-sizing: border-box; /* Include border in height calculation */   
     background: #111111b1;
     position: relative;
     outline: none;   /* Remove default focus behavior */
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    align-items: center; /* Center content vertically within button */
+    margin-top: 1%;
+}
+
+.language {
+    position: relative;
 }
 
 .languages-button img {
@@ -202,7 +328,7 @@ button{
 /* Hide dropdown by default */
 .language-dropdown {
     position: absolute;
-    top: 100%;
+    top: auto;
     left: 0;
     background: #000;
     border: 1px solid #fff;
@@ -228,6 +354,7 @@ button{
     font-size: 14px;
     font-weight: 600;
     transition: background-color 0.2s ease;
+    letter-spacing: 0.5px;
 }
 
 /* focus state for better accessibility and visual feedback when clicked or focused */  
